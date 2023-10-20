@@ -19,3 +19,8 @@ router.post("/login", loginController);
 //test routes
 router.get("/test", requireSignIn,  testController)
 export default router;
+
+//protected route auth
+router.get("/user-auth", requireSignIn, (req, res) => {
+  res.status(200).send({ ok: true });
+});
