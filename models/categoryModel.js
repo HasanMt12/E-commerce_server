@@ -10,9 +10,6 @@ const categorySchema = new mongoose.Schema({
     type: String,
     lowercase: true,
   },
-},
-  { collection: 'categories' },
+});
 
-);
-
-export default mongoose.model("categories", categorySchema);
+export default mongoose.model("Category", categorySchema);

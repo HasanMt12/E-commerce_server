@@ -1,9 +1,9 @@
 import express from "express";
 
 import { registerController,  loginController,  testController,
-} from "../controller/authController.js";
+} from "../controllers/authController.js";
 
-import { requireSignIn , isAdmin } from "../middleware/authMiddleware.js";
+import { requireSignIn , isAdmin } from "../middlewares/authMiddleware.js";
 
 //router object
 const router = express.Router();
