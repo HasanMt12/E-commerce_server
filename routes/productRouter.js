@@ -9,6 +9,7 @@ import {
   realtedProductController
 
 } from "../controllers/productController.js";
+// import { productsByCategoryController } from "../controllers/productController.js";
 import { isAdmin, requireSignIn } from "../middlewares/authMiddleware.js";
 import formidable from "express-formidable";
 
@@ -39,6 +40,9 @@ router.get("/get-product/:slug", getSingleProductController);
 
 //get photo
 router.get("/product-photo/:pid", productPhotoController);
+
+// // Get products by category
+// router.get("/products-by-category/:categorySlug", productsByCategoryController);
 
 //delete rproduct
 router.delete("/delete-product/:pid", deleteProductController);

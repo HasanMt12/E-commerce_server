@@ -1,12 +1,13 @@
 import express from "express";
 import { isAdmin, requireSignIn } from "../middlewares/authMiddleware.js";
 import {
-  categoryControlller,
+  categoryController,
   createCategoryController,
   deleteCategoryCOntroller,
   singleCategoryController,
   updateCategoryController,
 } from "../controllers/categoryController.js";
+import { productsByCategoryController } from "../controllers/productController.js";
 
 const router = express.Router();
 
@@ -27,8 +28,11 @@ router.put(
   updateCategoryController
 );
 
-//getALl category
-router.get("/get-category", categoryControlller);
+//getAll category
+router.get("/get-category", categoryController);
+
+// Get products by category
+router.get("/products-by-category/:categorySlug", productsByCategoryController);
 
 //single category
 router.get("/single-category/:slug", singleCategoryController);

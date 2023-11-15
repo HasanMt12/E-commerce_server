@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+// import Category from "./categoryModel.js"; // Adjust the path accordingly
 const productSchema = new mongoose.Schema(
   {
     name: {
@@ -27,6 +27,11 @@ const productSchema = new mongoose.Schema(
       ref: "Category",
       required: true,
     },
+    //  category: {
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   ref: Category, // Reference the Category model directly
+    //   required: true,
+    // },
     quantity: {
       type: Number,
       required: true,
