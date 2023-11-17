@@ -130,7 +130,7 @@ export const deleteProductController = async (req, res) => {
   }
 };
 
-//upate producta
+//update product
 export const updateProductController = async (req, res) => {
   try {
     const { name, description, shortDescription, price, category, quantity, shipping } =
@@ -176,7 +176,7 @@ export const updateProductController = async (req, res) => {
     res.status(500).send({
       success: false,
       error,
-      message: "Error in Updte product",
+      message: "Error in Update product",
     });
   }
 };
@@ -211,23 +211,37 @@ export const realtedProductController = async (req, res) => {
 
 
 export const productsByCategoryController = async (req, res) => {
-  try {
-    const { categorySlug } = req.params;
+   try {
+     const { categorySlug } = req.params;
 
-    const products = await productModel.find({ category: categorySlug })
-      .populate('category', 'name'); // Populate to get category details
+     const products = await productModel.find({ category: categorySlug })
+       .populate({
+        path: 'category',
+        select: 'name', 
+      }); // Populate to get category details
 
-    res.status(200).send({
-      success: true,
-      message: "Products by Category",
-      products,
-    });
-  } catch (error) {
-    console.log(error);
-    res.status(500).send({
-      success: false,
+     res.status(200).send({
+       success: true,
+       message: "Products by Category",
+       products,
+     });
+   } catch (error) {
+     console.log(error);
+     res.status(500).send({
+       success: false,
       error,
       message: "Error while getting products by category",
-    });
-  }
-};
+     });
+   }
+ };
+
+
+
+
+
+
+
+
+
+
+

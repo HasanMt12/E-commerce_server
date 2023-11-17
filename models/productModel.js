@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-// import Category from "./categoryModel.js"; // Adjust the path accordingly
+import Category from "./categoryModel.js"; // Adjust the path accordingly
 const productSchema = new mongoose.Schema(
   {
     name: {
