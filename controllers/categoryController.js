@@ -1,5 +1,6 @@
 import categoryModel from "../models/categoryModel.js";
 import slugify from "slugify";
+
 export const createCategoryController = async (req, res) => {
   try {
     const { name } = req.body;
@@ -80,10 +81,21 @@ export const categoryController = async (req, res) => {
 export const singleCategoryController = async (req, res) => {
   try {
     const category = await categoryModel.findOne({ slug: req.params.slug });
+    if (!category) {
+      return res.status(404).send({
+        success: false,
+        message: "Category not found",
+      });
+    }
+    // Only include necessary fields to reduce response size
+    
+    const { _id, name, shortDescription, photo } = category;
+     const products = await productModel.find({ category: category._id }).limit(10);
     res.status(200).send({
       success: true,
-      message: "Get SIngle Category SUccessfully",
-      category,
+      message: "Get Single Category Successfully",
+      category: { _id, name, shortDescription, photo },
+      products,
     });
   } catch (error) {
     console.log(error);
