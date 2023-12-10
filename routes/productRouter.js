@@ -6,7 +6,9 @@ import {
   getSingleProductController,
   productPhotoController,
   updateProductController,
-  realtedProductController
+  realtedProductController,
+  productPhotoController2,
+  productPhotoController3
 
 } from "../controllers/productController.js";
 // import { productsByCategoryController } from "../controllers/productController.js";
@@ -40,9 +42,9 @@ router.get("/get-product/:slug", getSingleProductController);
 
 //get photo
 router.get("/product-photo/:pid", productPhotoController);
-
-// // Get products by category
-// router.get("/products-by-category/:categorySlug", productsByCategoryController);
+//get photo
+router.get("/product-photo2/:pid", productPhotoController2);
+router.get("/product-photo3/:pid", productPhotoController3);
 
 //delete rproduct
 router.delete("/delete-product/:pid", deleteProductController);

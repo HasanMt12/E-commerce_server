@@ -6,7 +6,7 @@ import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRouter.js";
 import categoryRoutes from "./routes/categoryRouter.js";
 import productRoutes from "./routes/productRouter.js";
-import paymentRoutes from "./routes/paymentRouter.js";
+// import paymentRoutes from "./routes/paymentRouter.js";
 
 import cors from "cors";
 //configure env
@@ -27,7 +27,7 @@ app.use(morgan("dev"));
 app.use("/auth", authRoutes);
 app.use("/category", categoryRoutes);
 app.use("/product", productRoutes);
-app.use("/payment", paymentRoutes);
+// app.use("/payment", paymentRoutes);
 
 //rest api
 app.get("/", (req, res) => {
@@ -35,7 +35,10 @@ app.get("/", (req, res) => {
     message: "server is running"
   });
 });
-
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Internal Server Error');
+});
 //PORT
 const PORT = process.env.PORT || 5000;
 
